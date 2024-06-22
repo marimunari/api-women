@@ -1,4 +1,4 @@
-/* */
+/* Required external modules */
 const swaggerJsDoc = require('swagger-jsdoc');
 
 /* Constant to store swagger options */
@@ -12,7 +12,7 @@ const options = {
     },
     servers: [
       {
-        url: 'http://localhost:3333',
+        url: 'https://women-api.onrender.com/',
       },
     ],
   },
