@@ -1,10 +1,16 @@
 /* Required external modules */
 const express = require('express');
 const cors = require('cors');
+const swaggerUi = require('swagger-ui-express');
 const connectDatabase = require('./database');
-const routes = require('./routes/women');
 
-/* Creates an instance of the Express application */
+/* Routes */
+const routes = require('./routes/routes');
+
+/* Swagger */
+const specs = require('./swaggerConfig');
+
+/* Create an instance of the Express application */
 const app = express();
 
 /* Defines the port on which the server will listen for HTTP connections */
@@ -19,13 +25,14 @@ app.use(cors());
 
 /* Routes */
 app.use('/', routes);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 /* Generic error middleware to handle unhandled exceptions */
 app.use((error, request, response, next) => {
   response.status(500).json({
+    code: 500,
     status: 'error',
     message: 'Erro interno no servidor',
-    error: error.message
   });
 });
 
