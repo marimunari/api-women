@@ -10,7 +10,7 @@
  <a href="#books-features">Features</a> • 
  <a href="#white_check_mark-pré-requisitos">Pré-requisitos</a> • 
  <a href="#gear-rodando-a-aplicação">Rodando a aplicação</a> • 
- <a href="#memo-license">Licença</a> • 
+ <a href="#memo-licença">Licença</a> • 
  <a href="#pencil2-autor">Autor</a> 
 </p>
 
