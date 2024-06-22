@@ -1,4 +1,4 @@
-/* Required external modules */
+/* Models */
 const Woman = require('../models/woman');
 
 /* Async function to get all women */
@@ -7,14 +7,15 @@ async function getWomen(request, response) {
     const allWomens = await Woman.find();
 
     response.status(200).json({
+      code: 200,
       status: 'success',
       data: allWomens
     });
   } catch(error) {
     response.status(500).json({
+      code: 500,
       status: 'error',
       message: 'Erro ao buscar mulheres.',
-      error: error.message
     });
   }
 }
@@ -28,21 +29,22 @@ async function getWomanById(request, response) {
 
     if (!woman) {
       return response.status(404).json({
+        code: 400,
         status: 'error',
         message: 'Mulher não encontrada.',
-        error: error.message
       });
     }
 
     response.status(200).json({
+      code: 200,
       status: 'success',
       data: woman
     });
   } catch(error) {
     response.status(500).json({
+      code: 500,
       status: 'error',
       message: 'Erro ao buscar mulher.',
-      error: error.message
     });
   }
 }
@@ -56,14 +58,15 @@ async function createWoman(request, response) {
     const womanCreated = await newWoman.save();
 
     response.status(201).json({
+      code: 201,
       status: 'success',
       message: `A mulher ${womanCreated.name} foi criada com sucesso.`, data: womanCreated
     });
   } catch(error) {
     response.status(500).json({
+      code: 500,
       status: 'error',
       message: `Erro ao criar a mulher ${womanCreated.name}.`,
-      error: error.message
     });
   }
 }
@@ -82,21 +85,22 @@ async function editWoman(request, response) {
 
     if (!woman) {
       return response.status(404).json({
+        code: 404,
         status: 'error',
-        message: 'Mulher não encontrada',
-        error: error.message
+        message: 'Mulher não encontrada.',
       });
     }
     response.status(200).json({
+      code: 200,
       status: 'success',
       message: `A mulher ${woman.name} foi atualizada com sucesso!`,
       data: woman
     });
   } catch(error) {
     response.status(500).json({
+      code: 500,
       status: 'error',
-      message: `Erro ao atualizar a mulher ${name}`,
-      error: error.message
+      message: `Erro ao atualizar a mulher ${name}.`,
     });
   }
 }
@@ -111,21 +115,22 @@ async function deleteWoman(request, response) {
 
     if (!woman) {
       return response.status(404).json({
+        code: 404,
         status: 'error',
-        message: 'Mulher não encontrada',
-        error: error.message
+        message: 'Mulher não encontrada.',
       });
     }
 
     response.status(201).json({
+      code: 201,
       status: 'success',
       message: `A mulher ${woman.name} foi deletada com sucesso!`
     });
   } catch(error) {
     response.status(500).json({
+      code: 500,
       status: 'error',
-      message: `Erro ao deletar a mulher ${name}`,
-      error: error.message
+      message: `Erro ao deletar a mulher ${name}.`,
     });
   }
 }
